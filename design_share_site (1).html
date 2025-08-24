@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Design Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      display: block;
+    }
+    .download-btn {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background: #ff7eb3;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .download-btn:hover {
+      background: #ff4b91;
+    }
+  </style>
+</head>
+<body>
+  <header>🎨 My Design Gallery</header>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    // 👇 List of images in your photos folder
+    const images = [
+      "photos/design1.png",
+      "photos/design2.png",
+      "photos/design3.png"
+    ];
+
+    const gallery = document.getElementById("gallery");
+    images.forEach((img, index) => {
+      let card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+        <img src="${img}" alt="Design ${index+1}">
+        <a href="${img}" download class="download-btn">⬇ Download</a>
+      `;
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>
